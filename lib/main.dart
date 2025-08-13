@@ -34,7 +34,7 @@ void main() async {
 // The promptForPushNotificationsWithUserResponse function will show the iOS or Android push notification prompt. We recommend removing the following code and instead using an In-App Message to prompt for notification permission
   OneSignal.Notifications.requestPermission(true);
   Stripe.publishableKey =
-      'pk_test_51NDpRJJinXpHIPsErkhbbskGYZltQGnig4OTsxAuRcrWPXCNvyI6Dc8ApCNL4ciBQz1LhIT76fingitKdFTdjztU00zgfNNsgk';
+      'pk_test_51QxHI5CGRulHBmLSFCkJkMcNK8KyUp74xMxXPUk7Ha7xDijlXOXgfKhzElVuHo4dsN6C4dpoaxQTuomfnxV3TEAw00fww4uXkX';
   // await Stripe.instance.applySettings();
 
   runApp(MultiProvider(
@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

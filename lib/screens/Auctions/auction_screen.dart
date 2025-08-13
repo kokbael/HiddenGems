@@ -25,6 +25,10 @@ class AuctionScreen extends StatefulWidget {
 }
 
 class AuctionScreenState extends State<AuctionScreen> {
+  late final Future<Work?> _workFuture = _fetchWork();
+  late final Future<String> _artistNicknameFuture =
+      _fetchArtistNickname(widget.auctionWork.artistId);
+
   Future<Work?> _fetchWork() async {
     final workProvider = Provider.of<WorkProvider>(context, listen: false);
     return await workProvider.getWorkById(widget.auctionWork.workId);
@@ -126,7 +130,7 @@ class AuctionScreenState extends State<AuctionScreen> {
           child: Padding(
           padding: const EdgeInsets.all(16.0),
           child: FutureBuilder<Work?>(
-            future: _fetchWork(),
+            future: _workFuture,
             builder: (context, workSnapshot) {
               if (workSnapshot.connectionState == ConnectionState.waiting) {
                 return const Center(child: CircularProgressIndicator());
@@ -134,7 +138,7 @@ class AuctionScreenState extends State<AuctionScreen> {
               final work = workSnapshot.data;
 
               return FutureBuilder<String>(
-                future: _fetchArtistNickname(updatedAuction.artistId),
+                future: _artistNicknameFuture,
                 builder: (context, artistSnapshot) {
                   if (artistSnapshot.connectionState ==
                       ConnectionState.waiting) {
