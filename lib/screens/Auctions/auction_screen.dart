@@ -568,6 +568,11 @@ class AuctionScreenState extends State<AuctionScreen> {
 
                             await Provider.of<WorkProvider>(context,
                                     listen: false)
+                                .updateWorkAuctionStatus(
+                                    updatedAuction.workId, false);
+
+                            await Provider.of<WorkProvider>(context,
+                                    listen: false)
                                 .updateWorkSellingStatus(
                                     updatedAuction.workId, false);
 
